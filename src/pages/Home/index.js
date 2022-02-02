@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import { FiLink } from 'react-icons/fi';
 import './home.css';
-import Menu from '../../components/Menu'
+import Menu from '../../components/Menu';
+import LinkItem from '../../components/LinkItem';
 
 
 
 function Home() {
 
   const [link, setLink] =  useState('');
+
+
+  function handleShortLink() {
+
+
+
+
+  }
 
   return (
 
@@ -31,12 +40,13 @@ function Home() {
              />
           </div>
 
-          <button>Gerar Link</button>
+          <button onClick={handleShortLink}>Gerar Link</button>
 
 
       </div>
 
       <Menu />
+      <LinkItem />
 
     </div>
     
