@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FiLink } from 'react-icons/fi';
 import './home.css';
 import Menu from '../../components/Menu'
@@ -5,6 +6,8 @@ import Menu from '../../components/Menu'
 
 
 function Home() {
+
+  const [link, setLink] =  useState('');
 
   return (
 
@@ -21,7 +24,11 @@ function Home() {
       <div className="area-input"> 
           <div>
             <FiLink size={24} color='#FFF'/>
-            <input type="text"  placeholder='Cole seu link aqui...'/>
+            <input type="text"
+             value={link} 
+             placeholder='Cole seu link aqui...'
+             onChange={ (e) => setLink(e.target.value)}
+             />
           </div>
 
           <button>Gerar Link</button>
