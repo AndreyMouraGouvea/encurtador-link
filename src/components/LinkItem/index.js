@@ -1,7 +1,8 @@
 import './link-item.css';
 import { FiX, FiClipboard } from 'react-icons/fi'
 
-function LinkItem() {
+function LinkItem({ closeModal }) {
+    
 
     return (
         
@@ -9,7 +10,7 @@ function LinkItem() {
 
             <div className='modal-header'>
                 <h2>Link Encurtado</h2>
-                <button>
+                <button onClick={closeModal}>
                     <FiX size={28} color='#000'/>
                 </button>
             </div>

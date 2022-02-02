@@ -9,11 +9,12 @@ import LinkItem from '../../components/LinkItem';
 function Home() {
 
   const [link, setLink] =  useState('');
+  const [showModal, setShowModal] = useState(false);
 
 
   function handleShortLink() {
 
-
+    setShowModal(true);
 
 
   }
@@ -46,7 +47,13 @@ function Home() {
       </div>
 
       <Menu />
-      <LinkItem />
+
+
+      { showModal && (
+        <LinkItem 
+        closeModal={ () => setShowModal(false)}
+        />
+      )}
 
     </div>
     
