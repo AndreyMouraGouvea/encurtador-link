@@ -11,7 +11,9 @@ function Links() {
 
   const [myLinks, setMyLinks] = useState([]);
   const [data, setData] = useState({});
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+
+  const [emptyList, setEmptyList] = useState(false);
 
   useEffect (() => {
     async function getLinks() {
@@ -20,7 +22,7 @@ function Links() {
 
         if (result.length === 0) {
 
-          console.log('Lista Vazia')
+          setEmptyList(true);
 
         }
 
@@ -40,9 +42,16 @@ function Links() {
 
   }
 
-  function handleDelete( id ) {
+  async function handleDelete( id ) {
 
-    deleteLink(myLinks, id)
+    const result = await deleteLink(myLinks, id)
+
+    if (result.length === 0) {
+      setEmptyList(true);
+
+    }
+
+    setMyLinks(result)
   }
 
   return (
@@ -56,6 +65,13 @@ function Links() {
           <h1>Meus Links</h1>
         </div>
 
+        { emptyList && (
+
+          <div className='links-item'>
+            <h2 className='empty-text'>Sua Lista está vazia...</h2>
+          </div>
+        )
+        }
       
             { myLinks.map( link => (
             <div key={link.id} className='links-item'>
